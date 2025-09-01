@@ -1,0 +1,315 @@
+{
+  "mining": {
+    "status": "stopped",
+    "stopped_at": "2025-08-04T13:32:42.390Z",
+    "valid_wallet": "0xea6d82c3b35ab38dfe37ca6c059d4411923e0014"
+  },
+  "trading": {
+    "enabled": true,
+    "exchanges": [
+      "binance",
+      "coinbase",
+      "kraken"
+    ],
+    "strategies": [
+      "dca",
+      "grid",
+      "arbitrage"
+    ],
+    "riskLevel": "medium",
+    "autoTrade": false
+  },
+  "wallet": {
+    "supportedCoins": [
+      "BTC",
+      "ETH",
+      "LTC",
+      "XMR",
+      "DOGE",
+      "BNB",
+      "MATIC",
+      "ARB",
+      "OP",
+      "AVAX",
+      "SOL",
+      "FTM",
+      "MANTA",
+      "BASE",
+      "ZKSYNC",
+      "STARKNET"
+    ],
+    "addresses": {},
+    "balances": {},
+    "transactions": []
+  },
+  "security": {
+    "encryption": true,
+    "backupEnabled": true,
+    "twoFactorAuth": true
+  },
+  "alchemy": {
+    "api_key": "44dSO41R6RzBr6Fe0GsUs",
+    "status": "active",
+    "integrated_at": "2025-09-01T18:09:00.000Z",
+    "total_networks": 59,
+    "mainnet_networks": {
+      "ethereum": {
+        "name": "Ethereum",
+        "endpoint": "https://eth-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://eth-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 1,
+        "platform_support": "full",
+        "status": "active",
+        "priority": 1
+      },
+      "polygon": {
+        "name": "Polygon PoS",
+        "endpoint": "https://polygon-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://polygon-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 137,
+        "platform_support": "full",
+        "status": "active",
+        "priority": 2
+      },
+      "arbitrum": {
+        "name": "Arbitrum",
+        "endpoint": "https://arb-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://arb-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 42161,
+        "platform_support": "full",
+        "status": "active",
+        "priority": 3
+      },
+      "optimism": {
+        "name": "OP Mainnet",
+        "endpoint": "https://opt-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://opt-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 10,
+        "platform_support": "full",
+        "status": "active",
+        "priority": 4
+      },
+      "base": {
+        "name": "Base",
+        "endpoint": "https://base-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://base-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 8453,
+        "platform_support": "full",
+        "status": "active",
+        "priority": 5
+      },
+      "bnb_smart_chain": {
+        "name": "BNB Smart Chain",
+        "endpoint": "https://bnb-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://bnb-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 56,
+        "status": "active",
+        "priority": 6
+      },
+      "avalanche": {
+        "name": "Avalanche",
+        "endpoint": "https://avax-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://avax-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 43114,
+        "status": "active",
+        "priority": 7
+      },
+      "solana": {
+        "name": "Solana",
+        "endpoint": "https://solana-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "type": "solana",
+        "status": "active",
+        "priority": 8
+      },
+      "bitcoin": {
+        "name": "Bitcoin",
+        "endpoint": "https://bitcoin-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "type": "bitcoin",
+        "status": "active",
+        "priority": 9
+      },
+      "world_chain": {
+        "name": "World Chain",
+        "endpoint": "https://worldchain-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://worldchain-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 480,
+        "platform_support": "full",
+        "status": "active"
+      },
+      "shape": {
+        "name": "Shape",
+        "endpoint": "https://shape-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://shape-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "platform_support": "full",
+        "status": "active"
+      },
+      "zksync": {
+        "name": "ZKsync",
+        "endpoint": "https://zksync-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://zksync-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 324,
+        "status": "active"
+      },
+      "starknet": {
+        "name": "Starknet",
+        "endpoint": "https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_8/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": "0x534e5f4d41494e",
+        "version": "v0_8",
+        "status": "active"
+      },
+      "arbitrum_nova": {
+        "name": "Arbitrum Nova",
+        "endpoint": "https://arbnova-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://arbnova-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 42170,
+        "status": "active"
+      },
+      "polygon_zkevm": {
+        "name": "Polygon zkEVM",
+        "endpoint": "https://polygonzkevm-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://polygonzkevm-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 1101,
+        "status": "active"
+      },
+      "fantom": {
+        "name": "Fantom Opera",
+        "endpoint": "https://fantom-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://fantom-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 250,
+        "status": "active"
+      },
+      "mantle": {
+        "name": "Mantle",
+        "endpoint": "https://mantle-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://mantle-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 5000,
+        "status": "active"
+      },
+      "blast": {
+        "name": "Blast",
+        "endpoint": "https://blast-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://blast-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 81457,
+        "status": "active"
+      },
+      "linea": {
+        "name": "Linea",
+        "endpoint": "https://linea-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://linea-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 59144,
+        "status": "active"
+      },
+      "zora": {
+        "name": "Zora",
+        "endpoint": "https://zora-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://zora-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 7777777,
+        "platform_support": "full",
+        "status": "active"
+      },
+      "scroll": {
+        "name": "Scroll",
+        "endpoint": "https://scroll-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://scroll-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "status": "active"
+      },
+      "gnosis": {
+        "name": "Gnosis",
+        "endpoint": "https://gnosis-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://gnosis-mainnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "chain_id": 100,
+        "status": "active"
+      }
+    },
+    "testnet_networks": {
+      "tea_sepolia": {
+        "name": "Tea",
+        "endpoint": "https://tea-sepolia.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://tea-sepolia.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "status": "active",
+        "network": "sepolia"
+      },
+      "rise_testnet": {
+        "name": "Rise",
+        "endpoint": "https://rise-testnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://rise-testnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "status": "active",
+        "network": "testnet"
+      },
+      "monad_testnet": {
+        "name": "Monad",
+        "endpoint": "https://monad-testnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "websocket": "wss://monad-testnet.g.alchemy.com/v2/44dSO41R6RzBr6Fe0GsUs",
+        "platform_support": "full",
+        "status": "active",
+        "network": "testnet"
+      }
+    },
+    "network_priorities": [
+      "ethereum",
+      "polygon",
+      "arbitrum",
+      "optimism",
+      "base",
+      "bnb_smart_chain",
+      "avalanche",
+      "solana",
+      "bitcoin"
+    ],
+    "cross_chain_support": {
+      "enabled": true,
+      "bridge_protocols": ["poly", "hop", "celer", "anyswap"],
+      "supported_pairs": [
+        ["ethereum", "polygon"],
+        ["ethereum", "arbitrum"],
+        ["ethereum", "optimism"],
+        ["ethereum", "base"],
+        ["polygon", "arbitrum"],
+        ["arbitrum", "optimism"]
+      ]
+    }
+  },
+  "wallets": {
+    "0xea6d82c3b35ab38dfe37ca6c059d4411923e0014": {
+      "address": "0xea6d82c3b35ab38dfe37ca6c059d4411923e0014",
+      "type": "ethereum",
+      "status": "active",
+      "mining_stopped": true,
+      "coins_preserved": true,
+      "share_token": "fu00qzfDO23nXQ1",
+      "last_updated": "2025-08-04T13:32:42.390Z",
+      "networks": ["ethereum", "polygon", "arbitrum", "base"]
+    },
+    "0x0000000000000000000000000000000000001004": {
+      "address": "0x0000000000000000000000000000000000001004",
+      "type": "ethereum",
+      "status": "checked",
+      "balance_preserved": true,
+      "last_checked": "2025-08-04T13:43:49.858Z",
+      "networks": ["ethereum"]
+    }
+  },
+  "balancePreservation": {
+    "timestamp": "2025-08-04T13:43:49.858Z",
+    "shareToken": "fu00qzfDO23nXQ1",
+    "sourceAddress": "0x0000000000000000000000000000000000001004",
+    "safeWallet": "0xea6d82c3b35ab38dfe37ca6c059d4411923e0014",
+    "status": "PRESERVED",
+    "transferPlan": {
+      "needsTransfer": false,
+      "reason": "Source address has no balance to transfer",
+      "sourceBalance": "0",
+      "safeWalletBalance": "0"
+    }
+  },
+  "multi_chain_config": {
+    "auto_switch_network": true,
+    "gas_optimization": true,
+    "parallel_queries": true,
+    "load_balancing": true,
+    "failover_enabled": true,
+    "connection_timeout": 10000,
+    "retry_attempts": 3,
+    "health_check_interval": 60000
+  }
+}

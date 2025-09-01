@@ -1,0 +1,68 @@
+name: Deploy V3-Core with Blockchain Integration
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd blockchain && npm ci
+    
+    - name: Run blockchain tests
+      run: |
+        cd blockchain && npm test
+      env:
+        ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+    
+    - name: Test blockchain initialization
+      run: |
+        node blockchain/managers/multi-chain-crypto-manager.js --test
+      env:
+        ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    
+    - name: Install and build
+      run: |
+        npm ci
+        cd blockchain && npm ci
+    
+    - name: Validate blockchain system
+      run: |
+        echo "Validating blockchain system..."
+        node blockchain/test/test-manager.js
+        echo "✅ Blockchain system validated"
+      env:
+        ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}

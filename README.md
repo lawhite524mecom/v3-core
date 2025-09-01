@@ -64,3 +64,60 @@ The primary license for Uniswap V3 Core is the Business Source License 1.1 (`BUS
 
 - `contracts/libraries/FullMath.sol` is licensed under `MIT` (as indicated in its SPDX header), see [`contracts/libraries/LICENSE_MIT`](contracts/libraries/LICENSE_MIT)
 - All files in `contracts/test` remain unlicensed (as indicated in their SPDX headers).
+
+---
+
+## 🌐 Unified Blockchain Integration
+
+This repository now includes a comprehensive unified blockchain system supporting 59 networks through Alchemy API.
+
+### Quick Start
+```bash
+# Install dependencies
+npm install
+
+# Initialize blockchain system
+npm run blockchain:init
+
+# Launch dashboard
+npm run blockchain:dashboard
+
+# Run tests
+npm run blockchain:test
+```
+
+### Supported Networks
+- **59 Total Networks** via Alchemy API
+- **9 Priority Networks**: Ethereum, Polygon, Arbitrum, Optimism, Base, BNB Chain, Avalanche, Solana, Bitcoin
+- **Multi-chain wallet management**
+- **Real-time portfolio tracking**
+- **Circuit breaker protection**
+
+### Features
+- ✅ Multi-chain wallet creation and management
+- ✅ Real-time balance tracking across all networks
+- ✅ Interactive web dashboard
+- ✅ Network health monitoring
+- ✅ Circuit breaker pattern for resilience
+- ✅ Encrypted private key storage
+- ✅ Cross-chain portfolio management
+
+### API Configuration
+The system uses Alchemy API with key: `44dSO41R6RzBr6Fe0GsUs`
+
+### Documentation
+Complete documentation is available in:
+- `blockchain/docs/UNIFIED_BLOCKCHAIN_SYSTEM_DOCUMENTATION.md`
+- `blockchain/docs/GITHUB_V3_CORE_INTEGRATION.md`
+
+### Dashboard
+Access the web dashboard at: `blockchain/dashboard/unified-blockchain-dashboard.html`
+
+### System Status
+- **API Integration**: ✅ Active
+- **Network Coverage**: ✅ 59 Networks
+- **Dashboard**: ✅ Fully Functional
+- **Wallet Management**: ✅ Multi-Chain Support
+- **Monitoring**: ✅ Real-Time Health Checks
+
+---

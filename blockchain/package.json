@@ -1,0 +1,25 @@
+{
+  "name": "@v3-core/blockchain",
+  "version": "1.0.0",
+  "description": "Unified Blockchain System for V3-Core",
+  "main": "managers/multi-chain-crypto-manager.js",
+  "scripts": {
+    "start": "node managers/multi-chain-crypto-manager.js",
+    "dashboard": "node -e \"require('child_process').exec('start dashboard/unified-blockchain-dashboard.html')\"",
+    "test": "node test/test-manager.js",
+    "init": "node managers/multi-chain-crypto-manager.js --init"
+  },
+  "dependencies": {
+    "web3": "^4.5.0",
+    "@solana/web3.js": "^1.87.6",
+    "bitcoinjs-lib": "^6.1.5",
+    "axios": "^1.6.0",
+    "ws": "^8.16.0"
+  },
+  "keywords": ["blockchain", "multi-chain", "alchemy", "cryptocurrency"],
+  "author": "Louis White",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

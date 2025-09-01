@@ -10,7 +10,12 @@
   "keywords": [
     "uniswap",
     "core",
-    "v3"
+    "v3",
+    "blockchain",
+    "cryptocurrency",
+    "multi-chain",
+    "v3-core",
+    "alchemy"
   ],
   "repository": {
     "type": "git",
@@ -27,7 +32,13 @@
   "engines": {
     "node": ">=10"
   },
-  "dependencies": {},
+  "dependencies": {
+    "web3": "^4.5.0",
+    "@solana/web3.js": "^1.87.6",
+    "bitcoinjs-lib": "^6.1.5",
+    "axios": "^1.6.0",
+    "ws": "^8.16.0"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
@@ -54,6 +65,9 @@
   },
   "scripts": {
     "compile": "hardhat compile",
-    "test": "hardhat test"
+    "test": "hardhat test && npm run blockchain:test",
+    "blockchain:init": "node blockchain/managers/multi-chain-crypto-manager.js",
+    "blockchain:dashboard": "node -e \"require(\"child_process\").exec(\"start blockchain/dashboard/unified-blockchain-dashboard.html\")\"",
+    "blockchain:test": "node blockchain/test/test-manager.js"
   }
 }

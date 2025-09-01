@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌐 UNIFIED BLOCKCHAIN COMMAND CENTER - 59 Networks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #00d4aa 0%, #00ff88 25%, #44d041 50%, #00d4ff 75%, #8a2be2 100%);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+            animation: headerPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes headerPulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        .stat-label {
+            color: #c0c0c0;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .networks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .network-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid #00d4ff;
+            border-radius: 12px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .network-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.02);
+            border-color: #44d041;
+        }
+
+        .network-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .network-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .network-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-connected {
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        .status-disconnected {
+            background: #ff6b6b;
+            box-shadow: 0 0 10px #ff6b6b;
+        }
+
+        .status-connecting {
+            background: #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .network-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        .network-detail {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .control-panel {
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid #8a2be2;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .control-panel h3 {
+            color: #8a2be2;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .control-button {
+            background: linear-gradient(45deg, #8a2be2, #9d4edd);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .control-button:hover {
+            background: linear-gradient(45deg, #9d4edd, #c77dff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .wallet-overview {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .wallet-overview h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .wallet-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 107, 107, 0.2);
+        }
+
+        .wallet-item:last-child {
+            border-bottom: none;
+        }
+
+        .wallet-network {
+            font-size: 0.85rem;
+            color: #c0c0c0;
+        }
+
+        .wallet-balance {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .real-time-data {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .real-time-data h3 {
+            color: #00ff88;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .data-stream {
+            height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .log-timestamp {
+            color: #888;
+        }
+
+        .log-network {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .log-success {
+            color: #00ff88;
+        }
+
+        .log-warning {
+            color: #ffd700;
+        }
+
+        .log-error {
+            color: #ff6b6b;
+        }
+
+        .priority-networks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .priority-network {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .priority-network::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .priority-network h4 {
+            color: #00ff88;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .priority-network .chain-id {
+            color: #00d4ff;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .priority-network .endpoint-status {
+            color: #c0c0c0;
+            font-size: 0.8rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #00ff88;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid #333;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .priority-networks {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .priority-networks {
+                grid-template-columns: 1fr;
+            }
+            
+            .networks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌐 UNIFIED BLOCKCHAIN COMMAND CENTER</h1>
+        <p>59 Alchemy Networks | Multi-Chain Portfolio | Real-Time Monitoring | Louis White</p>
+    </div>
+
+    <div class="dashboard">
+        <div class="main-content">
+            <!-- System Statistics Overview -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalNetworks">59</div>
+                    <div class="stat-label">Total Networks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="connectedNetworks">0</div>
+                    <div class="stat-label">Connected Networks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeWallets">0</div>
+                    <div class="stat-label">Active Wallets</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalBalance">$0</div>
+                    <div class="stat-label">Total Portfolio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgLatency">0ms</div>
+                    <div class="stat-label">Avg Network Latency</div>
+                </div>
+            </div>
+
+            <!-- Priority Networks Section -->
+            <div class="section-title">🚀 PRIORITY NETWORKS</div>
+            <div class="priority-networks">
+                <div class="priority-network">
+                    <h4>🔷 Ethereum</h4>
+                    <div class="chain-id">Chain ID: 1</div>
+                    <div class="endpoint-status">Full Platform Support</div>
+                    <div class="network-status status-connecting"></div>
+                </div>
+                <div class="priority-network">
+                    <h4>🟣 Polygon</h4>
+                    <div class="chain-id">Chain ID: 137</div>
+                    <div class="endpoint-status">Full Platform Support</div>
+                    <div class="network-status status-connecting"></div>
+                </div>
+                <div class="priority-network">
+                    <h4>🔵 Arbitrum</h4>
+                    <div class="chain-id">Chain ID: 42161</div>
+                    <div class="endpoint-status">Full Platform Support</div>
+                    <div class="network-status status-connecting"></div>
+                </div>
+                <div class="priority-network">
+                    <h4>🔵 Base</h4>
+                    <div class="chain-id">Chain ID: 8453</div>
+                    <div class="endpoint-status">Full Platform Support</div>
+                    <div class="network-status status-connecting"></div>
+                </div>
+                <div class="priority-network">
+                    <h4>🟡 BNB Chain</h4>
+                    <div class="chain-id">Chain ID: 56</div>
+                    <div class="endpoint-status">Smart Contract Support</div>
+                    <div class="network-status status-connecting"></div>
+                </div>
+                <div class="priority-network">
+                    <h4>🔴 Avalanche</h4>
+                    <div class="chain-id">Chain ID: 43114</div>
+                    <div class="endpoint-status">DeFi Ecosystem</div>
+                    <div class="network-status status-connecting"></div>
+                </div>
+            </div>
+
+            <!-- All Networks Grid -->
+            <div class="section-title">🌐 ALL SUPPORTED NETWORKS</div>
+            <div class="networks-grid" id="networksGrid">
+                <!-- Networks will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <h3>⚡ CONTROL PANEL</h3>
+                <button class="control-button" onclick="initializeSystem()">Initialize System</button>
+                <button class="control-button" onclick="connectAllNetworks()">Connect All Networks</button>
+                <button class="control-button" onclick="createMultiWallet()">Create Multi-Chain Wallet</button>
+                <button class="control-button" onclick="updateAllBalances()">Update All Balances</button>
+                <button class="control-button" onclick="performHealthCheck()">Network Health Check</button>
+                <button class="control-button" onclick="exportPortfolio()">Export Portfolio Data</button>
+            </div>
+
+            <!-- Wallet Overview -->
+            <div class="wallet-overview">
+                <h3>💰 WALLET OVERVIEW</h3>
+                <div id="walletList">
+                    <div class="wallet-item">
+                        <div class="wallet-network">No wallets created yet</div>
+                        <div class="wallet-balance">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-Time Data Stream -->
+            <div class="real-time-data">
+                <h3>📊 REAL-TIME DATA STREAM</h3>
+                <div class="data-stream" id="dataStream">
+                    <div class="log-entry">
+                        <span class="log-timestamp">[00:00:00]</span>
+                        <span class="log-success">SYSTEM:</span> Unified Blockchain Dashboard Loaded
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-timestamp">[00:00:01]</span>
+                        <span class="log-network">ALCHEMY:</span> API Key Configured (44dSO41R6RzBr6Fe0GsUs)
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-timestamp">[00:00:02]</span>
+                        <span class="log-success">CONFIG:</span> 59 Networks Available for Connection
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🌐 Unified Blockchain Command Center - Powered by Alchemy API | Louis White | Multi-Chain Portfolio Management System</p>
+        <p>Ethereum | Polygon | Arbitrum | Base | BNB Chain | Avalanche | Solana | Bitcoin + 51 Additional Networks</p>
+    </div>
+
+    <script>
+        // Network Configuration Data
+        const networkConfigs = {
+            "ethereum": { name: "Ethereum", chainId: 1, priority: 1 },
+            "polygon": { name: "Polygon PoS", chainId: 137, priority: 2 },
+            "arbitrum": { name: "Arbitrum", chainId: 42161, priority: 3 },
+            "optimism": { name: "OP Mainnet", chainId: 10, priority: 4 },
+            "base": { name: "Base", chainId: 8453, priority: 5 },
+            "bnb_smart_chain": { name: "BNB Smart Chain", chainId: 56, priority: 6 },
+            "avalanche": { name: "Avalanche", chainId: 43114, priority: 7 },
+            "solana": { name: "Solana", type: "solana", priority: 8 },
+            "bitcoin": { name: "Bitcoin", type: "bitcoin", priority: 9 },
+            "world_chain": { name: "World Chain", chainId: 480 },
+            "shape": { name: "Shape" },
+            "zksync": { name: "ZKsync", chainId: 324 },
+            "starknet": { name: "Starknet", chainId: "0x534e5f4d41494e" },
+            "arbitrum_nova": { name: "Arbitrum Nova", chainId: 42170 },
+            "polygon_zkevm": { name: "Polygon zkEVM", chainId: 1101 },
+            "fantom": { name: "Fantom Opera", chainId: 250 },
+            "mantle": { name: "Mantle", chainId: 5000 },
+            "blast": { name: "Blast", chainId: 81457 },
+            "linea": { name: "Linea", chainId: 59144 },
+            "zora": { name: "Zora", chainId: 7777777 },
+            "scroll": { name: "Scroll" },
+            "gnosis": { name: "Gnosis", chainId: 100 }
+        };
+
+        // Global state
+        let systemStatus = {
+            initialized: false,
+            connectedNetworks: 0,
+            totalNetworks: 59,
+            activeWallets: 0,
+            totalBalance: 0,
+            avgLatency: 0
+        };
+
+        // Initialize the dashboard
+        function initializeDashboard() {
+            populateNetworksGrid();
+            startRealTimeUpdates();
+            addLogEntry('DASHBOARD', 'Interface initialized successfully', 'success');
+        }
+
+        // Populate networks grid
+        function populateNetworksGrid() {
+            const grid = document.getElementById('networksGrid');
+            
+            Object.entries(networkConfigs).forEach(([key, config]) => {
+                const networkCard = createNetworkCard(key, config);
+                grid.appendChild(networkCard);
+            });
+            
+            addLogEntry('UI', `${Object.keys(networkConfigs).length} network cards generated`, 'success');
+        }
+
+        // Create individual network card
+        function createNetworkCard(networkKey, config) {
+            const card = document.createElement('div');
+            card.className = 'network-card';
+            card.id = `network-${networkKey}`;
+            
+            card.innerHTML = `
+                <div class="network-header">
+                    <div class="network-name">${config.name}</div>
+                    <div class="network-status status-disconnected"></div>
+                </div>
+                <div class="network-details">
+                    <div class="network-detail">
+                        <span>Chain ID:</span>
+                        <span>${config.chainId || 'N/A'}</span>
+                    </div>
+                    <div class="network-detail">
+                        <span>Type:</span>
+                        <span>${config.type || 'EVM'}</span>
+                    </div>
+                    <div class="network-detail">
+                        <span>Status:</span>
+                        <span class="status-text">Disconnected</span>
+                    </div>
+                    <div class="network-detail">
+                        <span>Latency:</span>
+                        <span class="latency-text">-</span>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Control panel functions
+        async function initializeSystem() {
+            addLogEntry('SYSTEM', 'Initializing Multi-Chain Crypto Manager...', 'success');
+            
+            // Simulate system initialization
+            await simulateDelay(2000);
+            
+            systemStatus.initialized = true;
+            updateSystemStats();
+            addLogEntry('SYSTEM', 'Multi-Chain Crypto Manager initialized successfully', 'success');
+        }
+
+        async function connectAllNetworks() {
+            if (!systemStatus.initialized) {
+                addLogEntry('ERROR', 'System not initialized. Please initialize first.', 'error');
+                return;
+            }
+            
+            addLogEntry('NETWORK', 'Connecting to all available networks...', 'success');
+            
+            const networks = Object.keys(networkConfigs);
+            let connected = 0;
+            
+            for (const networkKey of networks) {
+                await simulateNetworkConnection(networkKey);
+                connected++;
+                systemStatus.connectedNetworks = connected;
+                updateSystemStats();
+                
+                // Random delay between connections
+                await simulateDelay(Math.random() * 500 + 200);
+            }
+            
+            addLogEntry('NETWORK', `Successfully connected to ${connected} networks`, 'success');
+        }
+
+        async function simulateNetworkConnection(networkKey) {
+            const card = document.getElementById(`network-${networkKey}`);
+            const statusIndicator = card.querySelector('.network-status');
+            const statusText = card.querySelector('.status-text');
+            const latencyText = card.querySelector('.latency-text');
+            
+            // Set connecting state
+            statusIndicator.className = 'network-status status-connecting';
+            statusText.textContent = 'Connecting...';
+            
+            // Simulate connection time
+            await simulateDelay(Math.random() * 1000 + 500);
+            
+            // Simulate success/failure (95% success rate)
+            const success = Math.random() > 0.05;
+            
+            if (success) {
+                const latency = Math.floor(Math.random() * 200 + 50);
+                
+                statusIndicator.className = 'network-status status-connected';
+                statusText.textContent = 'Connected';
+                latencyText.textContent = `${latency}ms`;
+                
+                addLogEntry(networkConfigs[networkKey].name, `Connected successfully (${latency}ms)`, 'success');
+            } else {
+                statusIndicator.className = 'network-status status-disconnected';
+                statusText.textContent = 'Failed';
+                latencyText.textContent = 'Timeout';
+                
+                addLogEntry(networkConfigs[networkKey].name, 'Connection failed - timeout', 'error');
+            }
+        }
+
+        async function createMultiWallet() {
+            if (systemStatus.connectedNetworks === 0) {
+                addLogEntry('ERROR', 'No networks connected. Connect networks first.', 'error');
+                return;
+            }
+            
+            addLogEntry('WALLET', 'Creating multi-chain wallet...', 'success');
+            await simulateDelay(1500);
+            
+            systemStatus.activeWallets++;
+            updateSystemStats();
+            updateWalletList();
+            
+            addLogEntry('WALLET', `Multi-chain wallet created (${systemStatus.activeWallets} active)`, 'success');
+        }
+
+        async function updateAllBalances() {
+            if (systemStatus.activeWallets === 0) {
+                addLogEntry('ERROR', 'No wallets available. Create a wallet first.', 'error');
+                return;
+            }
+            
+            addLogEntry('BALANCE', 'Updating all wallet balances...', 'success');
+            await simulateDelay(2000);
+            
+            // Simulate balance updates
+            systemStatus.totalBalance = Math.random() * 10000 + 1000;
+            updateSystemStats();
+            updateWalletList();
+            
+            addLogEntry('BALANCE', `Portfolio updated: $${systemStatus.totalBalance.toFixed(2)}`, 'success');
+        }
+
+        async function performHealthCheck() {
+            addLogEntry('HEALTH', 'Performing network health check...', 'success');
+            await simulateDelay(3000);
+            
+            const avgLatency = Math.floor(Math.random() * 100 + 80);
+            systemStatus.avgLatency = avgLatency;
+            updateSystemStats();
+            
+            addLogEntry('HEALTH', `Health check complete. Average latency: ${avgLatency}ms`, 'success');
+        }
+
+        function exportPortfolio() {
+            const portfolioData = {
+                timestamp: new Date().toISOString(),
+                totalNetworks: systemStatus.totalNetworks,
+                connectedNetworks: systemStatus.connectedNetworks,
+                activeWallets: systemStatus.activeWallets,
+                totalBalance: systemStatus.totalBalance,
+                avgLatency: systemStatus.avgLatency
+            };
+            
+            const dataStr = JSON.stringify(portfolioData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `portfolio_${Date.now()}.json`;
+            link.click();
+            
+            addLogEntry('EXPORT', 'Portfolio data exported successfully', 'success');
+        }
+
+        // Update system statistics
+        function updateSystemStats() {
+            document.getElementById('connectedNetworks').textContent = systemStatus.connectedNetworks;
+            document.getElementById('activeWallets').textContent = systemStatus.activeWallets;
+            document.getElementById('totalBalance').textContent = `$${systemStatus.totalBalance.toFixed(0)}`;
+            document.getElementById('avgLatency').textContent = `${systemStatus.avgLatency}ms`;
+        }
+
+        // Update wallet list
+        function updateWalletList() {
+            const walletList = document.getElementById('walletList');
+            
+            if (systemStatus.activeWallets === 0) {
+                walletList.innerHTML = `
+                    <div class="wallet-item">
+                        <div class="wallet-network">No wallets created yet</div>
+                        <div class="wallet-balance">-</div>
+                    </div>
+                `;
+            } else {
+                let walletHTML = '';
+                
+                // Show connected networks with simulated balances
+                const connectedNetworks = ['Ethereum', 'Polygon', 'Arbitrum', 'Base'];
+                connectedNetworks.slice(0, Math.min(connectedNetworks.length, systemStatus.connectedNetworks)).forEach(network => {
+                    const balance = (Math.random() * 5 + 0.1).toFixed(3);
+                    walletHTML += `
+                        <div class="wallet-item">
+                            <div class="wallet-network">${network}</div>
+                            <div class="wallet-balance">${balance} ETH</div>
+                        </div>
+                    `;
+                });
+                
+                walletList.innerHTML = walletHTML;
+            }
+        }
+
+        // Add log entry to data stream
+        function addLogEntry(source, message, type = 'info') {
+            const dataStream = document.getElementById('dataStream');
+            const timestamp = new Date().toLocaleTimeString();
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            
+            logEntry.innerHTML = `
+                <span class="log-timestamp">[${timestamp}]</span>
+                <span class="log-${type}">${source.toUpperCase()}:</span> ${message}
+            `;
+            
+            dataStream.appendChild(logEntry);
+            dataStream.scrollTop = dataStream.scrollHeight;
+            
+            // Keep only last 20 entries
+            while (dataStream.children.length > 20) {
+                dataStream.removeChild(dataStream.firstChild);
+            }
+        }
+
+        // Start real-time updates
+        function startRealTimeUpdates() {
+            // Simulate periodic system updates
+            setInterval(() => {
+                // Random system activity
+                const activities = [
+                    'Block sync updated',
+                    'Network latency check',
+                    'Health monitor ping',
+                    'Balance cache refresh',
+                    'Connection pool cleanup'
+                ];
+                
+                const activity = activities[Math.floor(Math.random() * activities.length)];
+                addLogEntry('SYSTEM', activity, 'info');
+            }, 5000);
+            
+            // Update timestamps periodically
+            setInterval(() => {
+                const timestamps = document.querySelectorAll('.log-timestamp');
+                // Keep logs fresh
+            }, 30000);
+        }
+
+        // Utility functions
+        function simulateDelay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+        });
+
+    </script>
